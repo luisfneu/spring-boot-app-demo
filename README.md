@@ -12,25 +12,25 @@
 ** https://start.spring.io/
 
 ##### with maven do clean package
-mvn clen package
+    mvn clen package
 
-maven clean package minds any previous builds are removed with a clean project, and then you create a new build artifact for your project.
+ℹ️ maven clean package minds any previous builds are removed with a clean project, and then you create a new build artifact for your project.
 
 ##### create a docker build with your app
-docker build -t demo-app . 
+    docker build -t demo-app . 
 
 ##### run you app
-docker run -p 8080:8080 demo-app
+    docker run -p 8080:8080 demo-app
 
 ##### run you app
-http://localhost:8080/hello
+    http://localhost:8080/hello
 
 ##### result:
- hello Mundo!
+    hello Mundo!
 
-you can use /hello /oi /ola or /hi
-then you can put another level wih /name and /name/surname for instance: 
-http://localhost:8080/hello/Luis/Neu
+⚠️ you can use /hello /oi /ola or /hi then you can put another level wih /name and /name/surname for instance: 
+##### 
+    http://localhost:8080/hello/Luis/Neu
 
 ##### result:
-hello Luis Neu!
+    hello Luis Neu!
