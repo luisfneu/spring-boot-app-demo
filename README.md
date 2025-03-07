@@ -1,8 +1,36 @@
-# POC Spring Boot
+# POC simple hello world Spring Boot
 
 ##### install java
     brew install --cask oracle-jdk
+    brew install maven
+    install docker desktop from docker.com
 
- ##### navigate to Java home directory
-    /Library/Java/JavaVirtualMachines/<jdk-23.jdk>/Contents/Home
+##### navigate to Java home directory
+    cd /Library/Java/JavaVirtualMachines/<jdk-23.jdk>/Contents/Home
 
+* project was based woth the springboot generator with maven and java 17
+** https://start.spring.io/
+
+##### with maven do clean package
+mvn clen package
+
+maven clean package minds any previous builds are removed with a clean project, and then you create a new build artifact for your project.
+
+##### create a docker build with your app
+docker build -t demo-app . 
+
+##### run you app
+docker run -p 8080:8080 demo-app
+
+##### run you app
+http://localhost:8080/hello
+
+##### result:
+ hello Mundo!
+
+you can use /hello /oi /ola or /hi
+then you can put another level wih /name and /name/surname for instance: 
+http://localhost:8080/hello/Luis/Neu
+
+##### result:
+hello Luis Neu!
