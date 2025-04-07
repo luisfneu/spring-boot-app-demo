@@ -13,7 +13,8 @@ spec:
         app: hello-world-lneu
     spec:
       containers:
-        - name: hello-world
+        - name: hello-world-lneu
           image: luisneu/demo-app:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8081
