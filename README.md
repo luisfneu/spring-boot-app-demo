@@ -17,11 +17,15 @@
 ℹ️ maven clean package minds any previous builds are removed with a clean project, and then you create a new build artifact for your project.
 
 ##### create a docker build with your app
-    docker build -t demo-app . 
+    docker build -t demo-app . # --platform linux/x86_64 
 
 ##### send to registry
     docker image tag demo-app:latest luisneu/demo-app:latest
     docker push luisneu/demo-app:latest
+
+##### run you app
+     docker run -p 8081:8080 demo-app
+
 ##### run you app
     http://localhost:8080/hello
 
