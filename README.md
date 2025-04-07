@@ -19,11 +19,15 @@
 ##### create a docker build with your app
     docker build -t demo-app . 
 
+##### send to registry
+    docker image tag demo-app:latest luisneu/demo-app:latest
+    docker push luisneu/demo-app:latest
 ##### run you app
-    docker run -p 8080:8080 demo-app
+    http://localhost:8080/hello
 
 ##### run you app
     http://localhost:8080/hello
+    
 
 ##### result:
     hello Mundo!
