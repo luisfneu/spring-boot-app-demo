@@ -1,6 +1,5 @@
 # Usar a imagem oficial do openjdk como imagem de base
-# FROM openjdk:25-ea-16-jdk-oraclelinux9
-FROM amd64/openjdk:latest 
+FROM openjdk:25-ea-16-jdk-oraclelinux9
 
 # Diretório de trabalho no contêiner
 WORKDIR /app
