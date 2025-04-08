@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: spring-lneu
+  namespace: app
+spec:
+  destination:
+    name: ''
+    namespace: app
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: argocd
+    repoURL:  https://github.com/luisfneu/spring-boot-app-demo.git
+    targetRevision: rollouts
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
