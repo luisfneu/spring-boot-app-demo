@@ -1,12 +1,24 @@
-# hello-world-service.yaml
-apiVersion: v1
 kind: Service
+apiVersion: v1
 metadata:
-  name: hello-world-bg
+  name: rollout-bluegreen-active
 spec:
   selector:
-    app: hello-world-bg
+    app: rollout-bluegreen
   ports:
-    - protocol: TCP
-      port: 8081
-      targetPort: 8080
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: rollout-bluegreen-preview
+spec:
+  selector:
+    app: rollout-bluegreen
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
