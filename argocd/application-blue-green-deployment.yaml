@@ -2,14 +2,14 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: spring-lneu
-  namespace: app
+  namespace: argo-cd
 spec:
   destination:
     name: ''
     namespace: app
     server: 'https://kubernetes.default.svc'
   source:
-    path: argocd
+    path: k8s-manifests
     repoURL:  https://github.com/luisfneu/spring-boot-app-demo.git
     targetRevision: rollouts
   project: default
