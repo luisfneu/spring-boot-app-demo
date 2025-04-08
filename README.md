@@ -43,4 +43,4 @@
     hello Luis Neu!
 
 access in kubernetes
--- kubectl exec -it -n app hello-world-lneu-7f885bb6dd-v9kmj -- /bin/bash
+-- kubectl port-forward <POD> 8080:8080 -n app
