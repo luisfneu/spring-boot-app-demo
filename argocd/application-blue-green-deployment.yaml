@@ -11,7 +11,7 @@ spec:
   source:
     path: k8s-manifests
     repoURL:  https://github.com/luisfneu/spring-boot-app-demo.git
-    targetRevision: rollouts
+    targetRevision: main
   project: default
   syncPolicy:
     automated:
