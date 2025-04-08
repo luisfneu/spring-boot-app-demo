@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
-@RequestMapping(path = {"/hellow", "/hi", "/ola", "/oi"})
+@RequestMapping(path = {"/hello", "/hi", "/ola", "/oi"})
 public class HelloWorldController {
     
     
