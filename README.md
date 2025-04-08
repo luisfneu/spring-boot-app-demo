@@ -43,4 +43,4 @@
     hello Luis Neu!
 
 access in kubernetes
--- kubectl port-forward <POD> 8080:8080 -n app
+-- kubectl port-forward service/hello-world-lneu 8081:8081 -n app

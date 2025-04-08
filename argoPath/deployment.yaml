@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world-lneu
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-world-lneu
+  template:
+    metadata:
+      labels:
+        app: hello-world-lneu
+    spec:
+      containers:
+        - name: hello-world-lneu
+          image: luisneu/demo-app:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
