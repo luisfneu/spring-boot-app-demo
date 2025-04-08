@@ -25,7 +25,6 @@
 
 ##### run you app
      docker run -p 8081:8080 demo-app
-
 ##### run you app
     http://localhost:8080/hello
 
@@ -42,3 +41,6 @@
 
 ##### result:
     hello Luis Neu!
+
+access in kubernetes
+-- kubectl exec -it -n app hello-world-lneu-7f885bb6dd-v9kmj -- /bin/bash

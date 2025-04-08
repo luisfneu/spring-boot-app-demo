@@ -1,5 +1,5 @@
 # Usar a imagem oficial do openjdk como imagem de base
-FROM openjdk:25-ea-16-jdk-oraclelinux9
+FROM openjdk:25-jdk
 
 # Diretório de trabalho no contêiner
 WORKDIR /app
@@ -8,7 +8,7 @@ WORKDIR /app
 COPY target/demo-0.0.1-SNAPSHOT.jar app.jar
 
 # Expor a porta
-EXPOSE 8081
+EXPOSE 8080
 
 # Comando para rodar a aplicação
 ENTRYPOINT ["java", "-jar", "app.jar"]

@@ -26,3 +26,5 @@ replay_pid*
 
 #mac files
 .DS_Store
+
+spring-boot-app-demo/target* 
