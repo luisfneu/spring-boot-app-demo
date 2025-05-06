@@ -1,0 +1,73 @@
+pipeline { 
+    agente any
+    // install JDK in jenkins with name java-23
+    // install maven in jenkins with name mvn-3.9
+    tools {
+        jdk 'jdk-23'
+        maven 'maven-3.9.9'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                script {
+                    // Build the Spring Boot application
+                    sh 'checkout scm'
+                }
+            }
+        }
+        stage('Test') {
+            steps {
+                script {
+                    // Run unit tests
+                    sh 'mvn test'
+                }
+            }
+        }
+        stage('Build') {
+            steps {
+                script {
+                    // Build the Spring Boot application
+                    sh 'mvn clean install -DskipTests'
+                }
+            }
+        }
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv("${SONARQUBE_ENV}") {
+                    sh 'mvn sonar:sonar'
+                }
+            }
+        }
+        stage('Sonar QG') { // Quality Gate
+            steps {
+                waitForQualityGate abortPipeline: true
+            }
+        }
+        stage('TF plan') {
+            steps {
+                script {
+                    // Run terraform plan
+                    sh 'terraform plan -out=tfplan'
+                }
+            }
+        }
+        stage('TF Apply') {
+            steps {
+                script {
+                    // Deploy the application to a server wit terraform
+                    sh 'terraform apply -auto-approve tfplan'
+                }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                script {
+                    // Deploy the application to a server
+                    sh 'scp target/myapp.jar user@server:/path/to/deploy'
+                }
+            }
+        }        
+    }
+
+}
