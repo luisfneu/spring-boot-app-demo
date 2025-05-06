@@ -2,10 +2,6 @@ pipeline {
     agente any
     // install JDK in jenkins with name java-23
     // install maven in jenkins with name mvn-3.9
-    tools {
-        jdk 'jdk-23'
-        maven 'maven-3.9.9'
-    }
 
     stages {
         stage('Checkout') {
