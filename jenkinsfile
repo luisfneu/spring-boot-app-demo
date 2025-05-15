@@ -60,7 +60,7 @@ pipeline {
             steps {
                 script {
                     // Deploy the application to a server
-                    sh 'scp target/myapp.jar user@server:/path/to/deploy'
+                    sh 'scp target/demo-app.jar user@server:/path/to/deploy'
                 }
             }
         }        
