@@ -3,7 +3,6 @@ variable "region" {
 }
 
 variable "ami_id" {
-  description = "AMI ID da instância Ubuntu (e.g., Ubuntu Server 22.04)"
   default     = "ami-053b0d53c279acc90"
 }
 
