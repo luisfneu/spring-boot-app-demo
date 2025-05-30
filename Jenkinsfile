@@ -1,5 +1,5 @@
 pipeline { 
-    agente any
+    agent any
     // TO_DO
         // install JDK in jenkins with name java-23
         // install maven in jenkins with name mvn-3.9
