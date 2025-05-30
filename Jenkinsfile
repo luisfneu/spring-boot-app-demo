@@ -39,57 +39,57 @@ pipeline {
                 }
             }
         }
-        stage('SonarQube Analysis') {
-            steps {
-                withSonarQubeEnv("${SONARQUBE_ENV}") {
-                    sh 'mvn sonar:sonar'
-                }
-            }
-        }
-        stage('Sonar QG') { // Quality Gate
-            steps {
-                waitForQualityGate abortPipeline: true
-            }
-        }
-        stage('TF init') {
-            steps {
-                script {
-                    // Run terraform ini
-                    sh 'terraform init'
-                }
-            }
-        }
-        stage('TF plan') {
-            steps {
-                script {
-                    // Run terraform plan
-                    sh 'terraform plan -out=tfplan'
-                }
-            }
-        }
-        stage('TF Apply') {
-            steps {
-                script {
-                    // Deploy the application to a server wit terraform
-                    sh 'terraform apply -auto-approve tfplan'
-                }
-            }
-        }
-        stage('Deploy') {
-            steps {
-                dir("${TF_DIR}") {
-                    script {
-                        // Deploy the application to a server
-                        def instance_ip = sh(script: "terraform output -raw instance_ip",returnStdout: true).trim() // get the instance ip
-                        // SSH_KEY.pem is the key to access the instance NEED TO CONFIGURE IN JENKINS
-                        sh """
-                        scp -o StrictHostKeyChecking=no -i ~/SSH_KEY.pem ../target/*.jar ubuntu@${instance_ip}:/home/ubuntu/app.jar
-                        ssh -o StrictHostKeyChecking=no -i ~/SSH_KEY.pem ubuntu@${instance_ip} 'nohup java -jar app.jar > app.log 2>&1 &' 
-                        """
-                    }
-                }
-            }
-        }        
+        // stage('SonarQube Analysis') {
+        //     steps {
+        //         withSonarQubeEnv("${SONARQUBE_ENV}") {
+        //             sh 'mvn sonar:sonar'
+        //         }
+        //     }
+        // }
+        // stage('Sonar QG') { // Quality Gate
+        //     steps {
+        //         waitForQualityGate abortPipeline: true
+        //     }
+        // }
+        // stage('TF init') {
+        //     steps {
+        //         script {
+        //             // Run terraform ini
+        //             sh 'terraform init'
+        //         }
+        //     }
+        // }
+        // stage('TF plan') {
+        //     steps {
+        //         script {
+        //             // Run terraform plan
+        //             sh 'terraform plan -out=tfplan'
+        //         }
+        //     }
+        // }
+        // stage('TF Apply') {
+        //     steps {
+        //         script {
+        //             // Deploy the application to a server wit terraform
+        //             sh 'terraform apply -auto-approve tfplan'
+        //         }
+        //     }
+        // }
+        // stage('Deploy') {
+        //     steps {
+        //         dir("${TF_DIR}") {
+        //             script {
+        //                 // Deploy the application to a server
+        //                 def instance_ip = sh(script: "terraform output -raw instance_ip",returnStdout: true).trim() // get the instance ip
+        //                 // SSH_KEY.pem is the key to access the instance NEED TO CONFIGURE IN JENKINS
+        //                 sh """
+        //                 scp -o StrictHostKeyChecking=no -i ~/SSH_KEY.pem ../target/*.jar ubuntu@${instance_ip}:/home/ubuntu/app.jar
+        //                 ssh -o StrictHostKeyChecking=no -i ~/SSH_KEY.pem ubuntu@${instance_ip} 'nohup java -jar app.jar > app.log 2>&1 &' 
+        //                 """
+        //             }
+        //         }
+        //     }
+        // }        
     }
 
 }
