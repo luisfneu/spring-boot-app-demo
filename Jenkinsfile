@@ -31,14 +31,14 @@ pipeline {
                 }
             }
         }
-        // stage('Build') {
-        //     steps {
-        //         script {
-        //             // Build the Spring Boot application
-        //             sh 'mvn clean install -DskipTests'
-        //         }
-        //     }
-        // }
+        stage('Build') {
+            steps {
+                script {
+                    // Build the Spring Boot application
+                    sh 'mvn clean install -DskipTests'
+                }
+            }
+        }
         // stage('SonarQube Analysis') {
         //     steps {
         //         withSonarQubeEnv("${SONARQUBE_ENV}") {
