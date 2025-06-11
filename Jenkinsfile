@@ -47,19 +47,11 @@ pipeline {
             }
 
         }        
-        // stage('SonarQube Analysis') {
-        //     steps {
-        //         withSonarQubeEnv("${SONARQUBE_ENV}") {
-        //             sh 'mvn sonar:sonar'
-        //         }
-        //     }
-        // }
-
-        // stage('Sonar QG') { // Quality Gate
-        //     steps {
-        //         waitForQualityGate abortPipeline: true
-        //     }
-        // }
+        stage('Sonar QG') {
+            steps {
+                waitForQualityGate abortPipeline: true
+            }
+        }
         // stage('TF init') {
         //     steps {
         //         script {
