@@ -39,6 +39,11 @@ pipeline {
                 }
             }
         }
+        stage('SonarQube Analysis') {
+            withSonarQubeEnv() {
+                sh "mvn clean verify sonar:sonar -Dsonar.projectKey=springBootApp -Dsonar.projectName='springBootApp'"
+            }
+        }        
         // stage('SonarQube Analysis') {
         //     steps {
         //         withSonarQubeEnv("${SONARQUBE_ENV}") {
@@ -46,6 +51,7 @@ pipeline {
         //         }
         //     }
         // }
+
         // stage('Sonar QG') { // Quality Gate
         //     steps {
         //         waitForQualityGate abortPipeline: true
