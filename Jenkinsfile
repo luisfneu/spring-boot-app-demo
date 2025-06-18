@@ -32,5 +32,13 @@ pipeline {
                 }   
             }
         }
+        stage('Deploy') {
+            steps {
+                script {
+                    // Deploy the Spring Boot application
+                    sh 'aws s3 cp target/spring-boot-app-demo-0.0.1-SNAPSHOT.jar s3://spring-boot-app-demo/spring-boot-app-demo.jar'
+                }
+            }
+        }
     }
 }
